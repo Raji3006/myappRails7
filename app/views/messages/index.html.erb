@@ -1,0 +1,41 @@
+<%= content_for :javascripts do %>
+  <%= javascript_include_tag 'datatables' %>
+<% end %>
+
+<h1>Showing all Posts</h1>
+
+<div class="container">
+  <table id="myTable" class="display">
+  <thead>
+		<tr>
+			<th>Message</th>
+			<th>User</th>
+			<th>Time</th>
+			<th colspan="2">Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @messages.each do |m| %>
+			
+				<tr>
+					<td><%= m.message %></td>
+					<td><%= m.user.username %></td>
+					<td><%= m.created_at %></td>
+					<td><%= link_to 'Edit', edit_message_path(m) %></td>
+					<td><%= link_to 'Delete', message_path(m), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+
+				</tr>	
+			 
+		<% end %>
+	</tbody>
+</table>
+
+<p>
+	<%= link_to 'Create New Post', new_message_path%>
+	<%= link_to 'Back to Home', root_path %>
+</p>
+</div>
+
+
+

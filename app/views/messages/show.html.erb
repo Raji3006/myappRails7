@@ -1,0 +1,10 @@
+<h1>Post</h1>
+
+<p><strong>Message: </strong><%= @message.message %></p>
+<p> by <%= @message.username %></p>
+
+<%= link_to 'Edit', @message.id %>|
+<%= link_to 'Delete', @message.id, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> |
+<%= link_to  'Return to posts', messages_path %>
+
+<%= link_to 'Back to Home', root_path %>

@@ -1,5 +1,9 @@
 class PagesController < ApplicationController
     def home 
-        render html: 'Hello World!'
+        if user_signed_in?
+            render 'home'
+          else
+            render 'home_logout'
+          end
     end
 end
