@@ -1,0 +1,5 @@
+Created Message table and all CRUD operations for the same.
+Created User table using Devise gem and added customized validations for custom fields in signup form.
+Created Admin table using active_admin gem.
+Styled the app using Foundation.
+
