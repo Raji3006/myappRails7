@@ -75,14 +75,12 @@ group :test do
 end
 
 gem 'devise'
-
 gem 'sassc'
-
-gem 'jquery-rails'
-
 gem 'activeadmin'
 
-gem 'foundation-rails'
-gem 'autoprefixer-rails'
+group :development do
+  gem 'rails_layout'
+end
 
+gem 'autoprefixer-rails'
 gem 'ajax-datatables-rails'

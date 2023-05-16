@@ -39,8 +39,11 @@ class UsersController < ApplicationController
 
     def destroy
         @user = current_user.users.find(params[:id])
-        @user.destroy
-        redirect_to root_path
+        if @user.destroy
+            redirect_to root_path
+        else 
+            flash[:notice] = "Logout not successfull"
+        end
     end
 
     private

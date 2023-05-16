@@ -19,6 +19,8 @@ module Myapp
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.assets.paths << Rails.root.join("javascript")
+    config.action_view.form_with_generates_remote_forms = true
+    config.action_dispatch.default_headers.merge!('Content-Type' => Mime[:turbo_stream].to_s)
 
   end
 end

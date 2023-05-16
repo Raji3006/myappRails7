@@ -7,11 +7,15 @@
     <%= csp_meta_tag %>
 
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "application" %>
+   
+    <%= turbo_include_tags %>
   </head>
 
   <body>
     <p class="notice"><%= notice %></p> 
     <p class="alert"><%= alert %></p> 
+    <div id="hello"><div>
     <%= yield %>
   </body>
 </html>
