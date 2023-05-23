@@ -1,0 +1,36 @@
+<h1 class="text-center">Showing all Posts</h1>
+<div class="grid-container">
+  <table id="myTable" class="display" style="width:100%">
+  <thead>
+		<tr>
+			<th>Message</th>
+			<th>User</th>
+			<th>Time</th>
+			<th colspan="2">Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @messages.each do |m| %>
+
+				<tr>
+					<td><%= m.message %></td>
+					<td><%= m.user.username %></td>
+					<td><%= m.created_at %></td>
+					<% if current_user == m.user %>
+						<td><%= link_to 'Edit', edit_message_path(m) %></td>
+						<td><%= link_to 'Delete', message_path(m), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+					<% end %>
+				</tr>	
+		<% end %>
+	</tbody>
+</table>
+
+<p>
+	<%= link_to 'Create New Post', new_message_path, class: 'button'%>
+	<%= link_to 'Back to Home', root_path %>
+</p>
+
+</div>
+
+
