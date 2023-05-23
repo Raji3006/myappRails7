@@ -1,5 +1,8 @@
 <h1>Showing all Posts</h1>
 
+<%= javascript_include_tag 'dataTables' %>
+<%= stylesheet_link_tag 'dataTables' %>
+
 <div class="grid-container">
   <table id="myTable" class="display">
   <thead>
@@ -13,13 +16,16 @@
 
 	<tbody>
 		<% @messages.each do |m| %>
-			
+
 				<tr>
 					<td><%= m.message %></td>
 					<td><%= m.user.username %></td>
 					<td><%= m.created_at %></td>
-					<td><%= link_to 'Edit', edit_message_path(m) %></td>
-					<td><%= link_to 'Delete', message_path(m), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+					<% if current_user == m.user %>
+						<td><%= link_to 'Edit', edit_message_path(m) %></td>
+						<td><%= link_to 'Delete', message_path(m), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+
+					<% end %>
 
 				</tr>	
 			 
@@ -31,7 +37,7 @@
 	<%= link_to 'Create New Post', new_message_path, class: 'button'%>
 	<%= link_to 'Back to Home', root_path %>
 </p>
-</div>
 
+</div>
 
 

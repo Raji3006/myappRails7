@@ -83,4 +83,4 @@ group :development do
 end
 
 gem 'autoprefixer-rails'
-gem 'ajax-datatables-rails'
+# gem 'jquery-rails'

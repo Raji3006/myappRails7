@@ -1,7 +1,18 @@
+<%= javascript_include_tag 'createMessage' %>
+
+<% if @message.errors.any? %>
+  <h2> The following errors prevented the article from being saved </h2>
+  <ul>
+    <% @message.errors.full_messages.each do |msg| %>
+      <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with(model: @message, local: true) do |f| %>
 
   <%= f.label :Message %> <br/>
-  <%= f.text_area :message %>
+  <%= f.text_area :message, class: "messageField" %>
 
-  <%= f.submit %>
+  <%= f.submit "Create Message", id: "createButton" %>
 <% end %>

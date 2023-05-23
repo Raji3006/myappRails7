@@ -6,7 +6,6 @@ class MessagesController < ApplicationController
 
   def index
     @messages = Message.includes(:user)
-    # render layout: 'datatables'
   end
 
 	def new
