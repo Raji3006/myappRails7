@@ -5,7 +5,6 @@ import "controllers"
 import "jquery"
 window.$ = jQuery;
 window.jquery = jQuery;
-// window.jQuery = jQuery;
 
 import "foundation-sites"
 import "data-tables"
@@ -35,7 +34,6 @@ $(document).ready(function() {
 });
 
 $(document).ready( function () {
-  console.log("Hello");
   let table = new DataTable('#myTable');
 } );
 
