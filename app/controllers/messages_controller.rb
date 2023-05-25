@@ -49,13 +49,11 @@ class MessagesController < ApplicationController
         redirect_to messages_path
       else 
         flash[:alert] = "Message not Found"
-        redirect_to messages_path
+        redirect_to messages_path, status: :unprocessable_entity
       end
     end
   end
 
-  
-  
   private
 
   def message_params
