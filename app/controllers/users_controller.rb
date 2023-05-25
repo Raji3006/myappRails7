@@ -33,7 +33,8 @@ class UsersController < ApplicationController
             flash[:notice] = "Welcome to the App"
             redirect_to 'home_logged_in'
         else
-            render 'new'
+            @error_messages = @user.errors.full_messages
+            render 'new',  status: :unprocessable_entity
         end
     end
 
