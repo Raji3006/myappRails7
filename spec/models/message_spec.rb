@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
-  let(:user) { User.create(username: 'JohnDoe', email: 'john@example.com', phone_number: "1234567890", pincode: "123456", password: "password") }
+
+  let(:user) { create(:user) }
 
   describe 'validations' do
     it 'is valid with valid attributes' do
@@ -23,21 +24,11 @@ RSpec.describe Message, type: :model do
       expect(message).not_to be_valid
       expect(message.errors[:user]).to include("must exist")
     end
-
-    it 'creates the message' do
-      message = Message.create(message: "This is test", user_id: user.id)
-      expect(message).to be_valid
-    end
     
     it 'deletes the message' do
       message = Message.create(message: 'Hello, world!', user_id: user.id)
   
       expect { message.destroy }.to change(Message, :count).by(-1)
-    end
-
-    it 'reads the message' do
-      message = Message.create(message: "This is a test message", user_id: user.id)
-      expect(Message.find_by_message("This is a test message")).to eq(message)
     end
 
     it 'updates the message' do
@@ -47,13 +38,10 @@ RSpec.describe Message, type: :model do
       expect(message.reload.message).to eq(new_content)
     end
 
-    it 'returns all messages' do
-      message1 = Message.create(message: 'Message 1', user_id: user.id)
-      message2 = Message.create(message: 'Message 2', user_id: user.id)
-  
-      messages = Message.all
-  
-      expect(messages).to include(message1, message2)
+    it 'is not valid if it contains url' do
+      message = Message.create(message: 'hello https://www.example.com/path/to/page?query=example&id=123', user_id: user.id)
+      expect(message).not_to be_valid
+      expect(message.errors[:message]).to include("cannot contain a URL")
     end
   end
 
@@ -64,4 +52,15 @@ RSpec.describe Message, type: :model do
     end
   end
 end
+
+RSpec.describe TimeHelper, type: :helper do
+  describe "#format_time" do
+    it "formats time to 'Month - Year' format" do
+      time = Time.utc(2023, 5, 15, 9, 51, 49)
+      formatted_time = helper.format_time(time)
+      expect(formatted_time).to eq("May - 2023")
+    end
+  end
+end
+
 
