@@ -84,3 +84,8 @@ end
 
 gem 'autoprefixer-rails'
 # gem 'jquery-rails'
+gem "rspec-rails"
+
+gem 'database_cleaner'
+
+gem 'factory_bot_rails'

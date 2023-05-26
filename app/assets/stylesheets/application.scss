@@ -2,3 +2,20 @@
 *= require foundation.min
 *= require dataTables.min
 */
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  margin-right: 10px; /* Adjust the value as needed */
+}
+
+.dataTables_paginate a {
+  //padding: 6px 9px !important;
+  background: #ddd !important;
+  border-color: #ddd !important;
+}
+
+
+
+.messageField {
+  width: 500px;
+  height: 100px;
+}

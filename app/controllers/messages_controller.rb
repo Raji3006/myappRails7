@@ -23,7 +23,8 @@ class MessagesController < ApplicationController
       flash[:notice] = "You message was posted successfully"
       redirect_to messages_path
     else
-      render 'new'
+      @error_messages = @message.errors.full_messages
+      render 'new', status: :unprocessable_entity
 		end
   end
 
@@ -48,13 +49,11 @@ class MessagesController < ApplicationController
         redirect_to messages_path
       else 
         flash[:alert] = "Message not Found"
-        redirect_to messages_path
+        redirect_to messages_path, status: :unprocessable_entity
       end
     end
   end
 
-  
-  
   private
 
   def message_params

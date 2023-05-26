@@ -34,6 +34,8 @@ $(document).ready(function() {
 });
 
 $(document).ready( function () {
-  let table = new DataTable('#myTable');
+let table = new DataTable('#myTable', {
+  dom: 'Qlfrtip'
+});
 } );
 
