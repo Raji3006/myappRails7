@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'message_mailer/admin_list'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: "registrations" }
@@ -8,5 +9,6 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :messages
   resources :users
+
 end
   

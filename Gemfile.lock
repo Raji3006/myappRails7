@@ -173,6 +173,7 @@ GEM
       net-imap
       net-pop
       net-smtp
+    mailtrap (1.2.1)
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -327,6 +328,7 @@ DEPENDENCIES
   factory_bot_rails
   importmap-rails
   jbuilder
+  mailtrap
   pg (~> 1.1)
   pry-byebug (~> 3.10, >= 3.10.1)
   pry-doc

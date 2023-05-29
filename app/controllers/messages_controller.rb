@@ -20,7 +20,8 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user_id = current_user.id
     if @message.save
-      flash[:notice] = "You message was posted successfully"
+      flash[:notice] = "Your message was posted successfully"
+      AdminMailer.new_message(@message).deliver_now
       redirect_to messages_path
     else
       @error_messages = @message.errors.full_messages
