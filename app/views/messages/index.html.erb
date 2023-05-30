@@ -16,7 +16,7 @@
 				<tr>
 					<td><%= m.message %></td>
 					<td><%= m.user.username %></td>
-					<td><%= m.created_at.strftime("%B - %Y") %></td>
+					<td><%= @presenter.formatted_created_at[@messages.index(m)] %></td>					
 					<td>
 						<% if current_user == m.user %>
 							<%= link_to 'Edit', edit_message_path(m) %> |

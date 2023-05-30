@@ -4,6 +4,13 @@ class Message < ApplicationRecord
   validates :message, presence: true
   validate :no_url_format
 
+  def create_message(user_id, message_params)
+    self.user_id = user_id
+    self.attributes = message_params
+
+    save
+  end
+
   private
 
   def no_url_format
